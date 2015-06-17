@@ -10,14 +10,20 @@
   "keywords": [
     "npm"
   ],
-  "main": "lib/index.js",
+  "bin": {
+    "npm-clone": "./bin/npm-clone.js"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/goodeggs/npm-clone.git"
   },
   "homepage": "https://github.com/goodeggs/npm-clone",
   "bugs": "https://github.com/goodeggs/npm-clone/issues",
-  "dependencies": {},
+  "dependencies": {
+    "fibers": "^1.0.5",
+    "fibrous": "^0.4.0",
+    "minimist": "^1.1.1"
+  },
   "devDependencies": {
     "chai": "^3.0.0",
     "coffee-script": ">=1.8.x",
