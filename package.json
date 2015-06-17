@@ -1,0 +1,37 @@
+{
+  "name": "npm-clone",
+  "version": "1.0.0",
+  "description": "A utility to clone packages from one NPM server to another",
+  "author": "Good Eggs <open-source@goodeggs.com>",
+  "contributors": [
+    "Bob Zoller <bob@zoller.us>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "npm"
+  ],
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/goodeggs/npm-clone.git"
+  },
+  "homepage": "https://github.com/goodeggs/npm-clone",
+  "bugs": "https://github.com/goodeggs/npm-clone/issues",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "coffee-script": ">=1.8.x",
+    "mocha": "^2.2.5",
+    "mocha-sinon": "^1.1.4",
+    "sinon": "^1.15.3"
+  },
+  "scripts": {
+    "compile": "coffee --bare --compile --output lib/ src/",
+    "prepublish": "npm run compile",
+    "pretest": "npm run compile",
+    "test": "mocha"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org"
+  }
+}
