@@ -22,7 +22,8 @@
   "dependencies": {
     "fibers": "^1.0.5",
     "fibrous": "^0.4.0",
-    "minimist": "^1.1.1"
+    "minimist": "^1.1.1",
+    "npm-registry-client": "^6.4.0"
   },
   "devDependencies": {
     "chai": "^3.0.0",
