@@ -43,5 +43,3 @@ module.exports = fibrous (argv) ->
         throw e unless e.code is 'EPUBLISHCONFLICT'
         console.warn "#{moduleName}@#{semver} already exists on the destination, skipping."
 
-      break # just do the first one
-
