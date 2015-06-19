@@ -5,17 +5,19 @@ RegClient = require 'npm-registry-client'
 
 module.exports = fibrous (argv) ->
 
-  from =
-    url: argv.from
+  [to, from] = for dir in ['to', 'from']
+    url: argv[dir]
     auth:
-      token: argv['from-token']
-      username: argv['from-username']
-      password: argv['from-password']
+      token: argv["#{dir}-token"]
+      username: argv["#{dir}-username"]
+      password: argv["#{dir}-password"]
       alwaysAuth: true
 
   moduleNames = argv._
 
-  unless from.url and (from.auth.token or (from.auth.username and from.auth.password)) and moduleNames.length
+  unless from.url and (from.auth.token or (from.auth.username and from.auth.password)) and
+         to.url and (to.auth.token or (to.auth.username and to.auth.password)) and
+         moduleNames.length
     console.log 'usage: npm-clone --from <repository url> --from-token <token> --to <repository url> --to-token <token> moduleA [moduleB...]'
     return
 
@@ -33,10 +35,13 @@ module.exports = fibrous (argv) ->
 
       remoteTarball = npm.sync.fetch dist.tarball, auth: from.auth
 
-      localTarball = fs.createWriteStream path.resolve(path.basename(dist.tarball))
-      remoteTarball.pipe(localTarball)
-      localTarball.sync.on 'close'
+      try
+        res = npm.sync.publish "#{to.url}/#{moduleName}", auth: to.auth, metadata: newMetadata, access: 'public', body: remoteTarball
+        console.log "#{moduleName}@#{semver} cloned"
+      catch e
+        remoteTarball.connection.end() # abort
+        throw e unless e.code is 'EPUBLISHCONFLICT'
+        console.warn "#{moduleName}@#{semver} already exists on the destination, skipping."
 
-      console.log [moduleName, semver, dist.tarball, dist.shasum].join "\t"
       break # just do the first one
 
