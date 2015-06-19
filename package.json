@@ -1,5 +1,5 @@
 {
-  "name": "npm-clone",
+  "name": "npm-copy",
   "version": "1.0.0",
   "description": "A utility to clone packages from one NPM server to another",
   "author": "Good Eggs <open-source@goodeggs.com>",
@@ -11,14 +11,14 @@
     "npm"
   ],
   "bin": {
-    "npm-clone": "./bin/npm-clone.js"
+    "npm-copy": "./bin/npm-copy.js"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/goodeggs/npm-clone.git"
+    "url": "git://github.com/goodeggs/npm-copy.git"
   },
-  "homepage": "https://github.com/goodeggs/npm-clone",
-  "bugs": "https://github.com/goodeggs/npm-clone/issues",
+  "homepage": "https://github.com/goodeggs/npm-copy",
+  "bugs": "https://github.com/goodeggs/npm-copy/issues",
   "dependencies": {
     "fibers": "^1.0.5",
     "fibrous": "^0.4.0",

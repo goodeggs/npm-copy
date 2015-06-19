@@ -18,7 +18,7 @@ module.exports = fibrous (argv) ->
   unless from.url and (from.auth.token or (from.auth.username and from.auth.password)) and
          to.url and (to.auth.token or (to.auth.username and to.auth.password)) and
          moduleNames.length
-    console.log 'usage: npm-clone --from <repository url> --from-token <token> --to <repository url> --to-token <token> moduleA [moduleB...]'
+    console.log 'usage: npm-copy --from <repository url> --from-token <token> --to <repository url> --to-token <token> moduleA [moduleB...]'
     return
 
   npm = new RegClient()
