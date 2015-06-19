@@ -1,21 +1,21 @@
 # npm-clone
 
-A utility to clone packages from one NPM server to another
+A utility to clone packages from one NPM server to another.
 
 [![build status][travis-badge]][travis-link]
 [![npm version][npm-badge]][npm-link]
 [![MIT license][license-badge]][license-link]
 [![we're hiring][hiring-badge]][hiring-link]
 
+We wrote this while migrating from Nodejitsu's (deprecated) private NPM service to our own deployment of [Sinopia](https://github.com/rlidwka/sinopia).  For the list of modules you provide, it will find all of the published versions on the `from` repository, and publish them on the `to` repository.  It's that easy.  It's also idempotent and prints a warning if a particular version already exists on the `to` repo.
 
 ## Usage
 
-```
-npm install npm-clone
-```
+The example should explain things.  We accept either token auth or username/password auth.
 
-```js
-var npmClone = require('npm-clone');
+```
+npm install -g npm-clone
+npm-clone --from https://old.npm.mycorp.com --from-token foo --to https://new.npm.mycorp.com --to-username bob --to-password secret mycorp-logger mycorp-stats
 ```
 
 ## Contributing
