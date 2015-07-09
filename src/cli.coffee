@@ -2,6 +2,7 @@ path = require 'path'
 fs = require 'fs'
 fibrous = require 'fibrous'
 RegClient = require 'npm-registry-client'
+_ = require 'lodash'
 
 module.exports = fibrous (argv) ->
 
@@ -24,9 +25,21 @@ module.exports = fibrous (argv) ->
   npm = new RegClient()
 
   for moduleName in argv._
-    moduleData = npm.sync.get "#{from.url}/#{moduleName}", auth: from.auth, timeout: 3000
+    fromVersions = npm.sync.get("#{from.url}/#{moduleName}", auth: from.auth, timeout: 3000).versions
+    try
+      toVersions = npm.sync.get("#{to.url}/#{moduleName}", auth: to.auth, timeout: 3000).versions
+    catch e
+      throw e unless e.code is 'E404'
+      toVersions = {}
 
-    for semver, oldMetadata of moduleData.versions
+    versionsToSync = _.difference Object.keys(fromVersions), Object.keys(toVersions)
+
+    for semver, oldMetadata of fromVersions
+
+      unless semver in versionsToSync
+        console.log "#{moduleName}@#{semver} already exists on destination"
+        continue
+
       {dist} = oldMetadata
 
       # clone the metadata skipping private properties and 'dist'
