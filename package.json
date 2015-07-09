@@ -1,6 +1,6 @@
 {
   "name": "npm-copy",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A utility to clone packages from one NPM server to another",
   "author": "Good Eggs <open-source@goodeggs.com>",
   "contributors": [
