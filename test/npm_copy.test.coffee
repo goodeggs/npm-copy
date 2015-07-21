@@ -7,6 +7,6 @@ path = require 'path'
 describe 'npm-copy', ->
   it 'prints usage', (done) ->
     exec path.resolve(__dirname, '../bin/npm-copy.js'), (err, stdout, stderr) ->
-      expect(err).not.to.be.defined
+      expect(err).not.to.exist
       expect(stdout).to.contain 'usage:'
       done()
