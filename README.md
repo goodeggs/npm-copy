@@ -15,7 +15,7 @@ The example should explain things.  We accept either token auth or username/pass
 
 ```
 npm install -g npm-copy
-npm-copy --from https://old.npm.mycorp.com --from-token foo --to https://new.npm.mycorp.com --to-username bob --to-password secret mycorp-logger mycorp-stats
+npm-copy --from https://old.npm.mycorp.com --from-token foo --to https://new.npm.mycorp.com --to-username bob --to-password secret --to-email my@corp.com mycorp-logger mycorp-stats
 ```
 
 ## Contributing

@@ -12,6 +12,7 @@ module.exports = fibrous (argv) ->
       token: argv["#{dir}-token"]
       username: argv["#{dir}-username"]
       password: argv["#{dir}-password"]
+      email: argv["#{dir}-email"]
       alwaysAuth: true
 
   moduleNames = argv._
