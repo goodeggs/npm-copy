@@ -6,6 +6,10 @@ _ = require 'lodash'
 
 module.exports = fibrous (argv) ->
 
+  config =
+    ssl:
+      strict: !argv["strict-ssl-false"]
+
   [to, from] = for dir in ['to', 'from']
     url: argv[dir]
     auth:
@@ -20,10 +24,10 @@ module.exports = fibrous (argv) ->
   unless from.url and (from.auth.token or (from.auth.username and from.auth.password)) and
          to.url and (to.auth.token or (to.auth.username and to.auth.password)) and
          moduleNames.length
-    console.log 'usage: npm-copy --from <repository url> --from-token <token> --to <repository url> --to-token <token> moduleA [moduleB...]'
+    console.log 'usage: npm-copy --from <repository url> --from-token <token> --to <repository url> --to-token <token> [--strict-ssl-false] moduleA [moduleB...]'
     return
 
-  npm = new RegClient()
+  npm = new RegClient(config)
 
   for moduleName in argv._
     fromVersions = npm.sync.get("#{from.url}/#{moduleName}", auth: from.auth, timeout: 3000).versions
