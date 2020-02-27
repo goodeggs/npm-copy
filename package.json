@@ -20,7 +20,7 @@
   "homepage": "https://github.com/goodeggs/npm-copy",
   "bugs": "https://github.com/goodeggs/npm-copy/issues",
   "dependencies": {
-    "fibers": "^2.0.0",
+    "fibers": "^4.0.2",
     "fibrous": "^0.4.0",
     "lodash": "^3.10.0",
     "minimist": "^1.1.1",
