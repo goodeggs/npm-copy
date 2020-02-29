@@ -37,7 +37,7 @@
     "compile": "coffee --bare --compile --output lib/ src/",
     "prepublish": "npm run compile",
     "pretest": "npm run compile",
-    "test": "mocha test/npm_copy.test.coffee"
+    "test": "mocha test/**/*.test.coffee"
   },
   "publishConfig": {
     "registry": "http://registry.npmjs.org"
