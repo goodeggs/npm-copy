@@ -33,6 +33,10 @@
     "mocha-sinon": "^1.1.4",
     "sinon": "^1.15.3"
   },
+  "mocha": {
+    "require": "coffee-script/register",
+    "reporter": "spec"
+  },
   "scripts": {
     "compile": "coffee --bare --compile --output lib/ src/",
     "prepublish": "npm run compile",
