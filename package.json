@@ -20,24 +20,28 @@
   "homepage": "https://github.com/goodeggs/npm-copy",
   "bugs": "https://github.com/goodeggs/npm-copy/issues",
   "dependencies": {
-    "fibers": "^2.0.0",
+    "fibers": "^4.0.2",
     "fibrous": "^0.4.0",
-    "lodash": "^3.10.0",
+    "lodash": "^4.17.15",
     "minimist": "^1.1.1",
     "npm-registry-client": "^8.5.0"
   },
   "devDependencies": {
     "chai": "^3.0.0",
     "coffee-script": ">=1.8.x",
-    "mocha": "^2.2.5",
+    "mocha": "^7.1.0",
     "mocha-sinon": "^1.1.4",
     "sinon": "^1.15.3"
+  },
+  "mocha": {
+    "require": "coffee-script/register",
+    "reporter": "spec"
   },
   "scripts": {
     "compile": "coffee --bare --compile --output lib/ src/",
     "prepublish": "npm run compile",
     "pretest": "npm run compile",
-    "test": "mocha"
+    "test": "mocha test/**/*.test.coffee"
   },
   "publishConfig": {
     "registry": "http://registry.npmjs.org"
